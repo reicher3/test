@@ -4,6 +4,7 @@ import { supabase } from '../lib/supabase'
 import PortfolioChart from '../components/PortfolioChart'
 import PriceChange from '../components/PriceChange'
 import TradeBox from '../components/TradeBox'
+import OptionsChain from '../components/OptionsChain'
 
 type SymbolDetails = {
   symbol: string
@@ -119,6 +120,8 @@ export default function StockDetail() {
           value={details ? new Date(details.updated_at).toLocaleTimeString() : '—'}
         />
       </div>
+
+      <OptionsChain symbol={(details?.symbol ?? symbol ?? '').toUpperCase()} />
     </div>
   )
 }
