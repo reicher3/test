@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import PortfolioChart from '../components/PortfolioChart'
 import PriceChange from '../components/PriceChange'
+import TradeBox from '../components/TradeBox'
 
 type SymbolDetails = {
   symbol: string
@@ -77,9 +78,7 @@ export default function StockDetail() {
           <h1 className="text-2xl font-medium">{details?.symbol ?? symbol}</h1>
           <p className="text-rh-muted text-sm">{details?.display_name ?? ''}</p>
         </div>
-        <button className="bg-rh-green text-black font-medium rounded-full px-5 py-2 text-sm hover:opacity-90">
-          Trade
-        </button>
+        <TradeBox symbol={(details?.symbol ?? symbol ?? '').toUpperCase()} price={details?.price ?? null} />
       </div>
 
       <h2 className="text-3xl font-medium mt-4 mb-1">
