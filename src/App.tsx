@@ -3,6 +3,7 @@ import { AuthProvider, useAuth } from './hooks/useAuth'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import StockDetail from './pages/StockDetail'
+import Discover from './pages/Discover'
 import Shell from './components/Shell'
 
 function Protected({ children }: { children: React.ReactNode }) {
@@ -35,6 +36,9 @@ function App() {
           {import.meta.env.DEV && (
             <Route path="/__preview/stock/:symbol" element={<Shell><StockDetail /></Shell>} />
           )}
+          {import.meta.env.DEV && (
+            <Route path="/__preview/discover" element={<Shell><Discover /></Shell>} />
+          )}
           <Route
             path="/"
             element={
@@ -48,6 +52,14 @@ function App() {
             element={
               <Protected>
                 <StockDetail />
+              </Protected>
+            }
+          />
+          <Route
+            path="/discover"
+            element={
+              <Protected>
+                <Discover />
               </Protected>
             }
           />
