@@ -5,6 +5,7 @@ import Dashboard from './pages/Dashboard'
 import StockDetail from './pages/StockDetail'
 import Discover from './pages/Discover'
 import Orders from './pages/Orders'
+import SearchResults from './pages/SearchResults'
 import Shell from './components/Shell'
 
 function Protected({ children }: { children: React.ReactNode }) {
@@ -43,6 +44,9 @@ function App() {
           {import.meta.env.DEV && (
             <Route path="/__preview/orders" element={<Shell><Orders /></Shell>} />
           )}
+          {import.meta.env.DEV && (
+            <Route path="/__preview/search" element={<Shell><SearchResults /></Shell>} />
+          )}
           <Route
             path="/"
             element={
@@ -72,6 +76,14 @@ function App() {
             element={
               <Protected>
                 <Orders />
+              </Protected>
+            }
+          />
+          <Route
+            path="/search"
+            element={
+              <Protected>
+                <SearchResults />
               </Protected>
             }
           />
