@@ -1,7 +1,12 @@
+import { Navigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 
 export default function Login() {
   const { session, profile, loading, signInWithGoogle, signOut } = useAuth()
+
+  if (session && !loading && profile?.is_approved) {
+    return <Navigate to="/" replace />
+  }
 
   const showPendingState = session && !loading && profile && !profile.is_approved
 
